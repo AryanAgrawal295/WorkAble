@@ -18,20 +18,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// ✅ FINAL CORS CONFIG (PRODUCTION SAFE)
+// ✅ FINAL CORS (LOCKED TO ONE FRONTEND)
 app.use(cors({
-    origin: [
-        "http://localhost:5173",
-        process.env.FRONTEND_URL , // https://work-able.vercel.app
-        process.env.FRONTEND_URL_ALT 
-    ],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    origin: "https://work-able.vercel.app",
+    credentials: true
 }));
-
-// ✅ HANDLE PREFLIGHT REQUESTS
-app.options("*", cors());
 
 // ---------- ROUTES ----------
 app.use("/api/v1/user", userRoute);
