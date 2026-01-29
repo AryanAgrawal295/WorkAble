@@ -22,7 +22,8 @@ app.use(cookieParser());
 app.use(cors({
     origin: [
         "http://localhost:5173",
-        process.env.FRONTEND_URL   // https://work-able.vercel.app
+        process.env.FRONTEND_URL , // https://work-able.vercel.app
+        process.env.FRONTEND_URL_ALT 
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
